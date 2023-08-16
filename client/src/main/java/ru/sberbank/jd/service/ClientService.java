@@ -12,7 +12,7 @@ import ru.sberbank.jd.repository.ClientRepository;
 
 
 @Service
-public class ClientService implements UserDetailsService {
+public class ClientService/* implements UserDetailsService*/ {
 
     private final ClientRepository clientRepository;
 
@@ -20,21 +20,24 @@ public class ClientService implements UserDetailsService {
         this.clientRepository = clientRepository;
     }
 
-    @Override
+/*    @Override
     public UserDetails loadUserByUsername(String login) {
         Optional<Client> optionalUser = clientRepository.findByLogin(login);
         Client client = optionalUser.orElseThrow(() ->
                 new RuntimeException("User with current login not found"));
 
         return User.builder().username(client.getLogin()).password(client.getPassword()).roles().build();
+    }*/
+
+    public boolean exists(String login) {
+        return clientRepository.existsByLogin(login);
     }
 
-    public ClientDTO getClientByLogin(String login) {
-        Optional<Client> optionalUser = clientRepository.findByLogin(login);
-        Client rawClient = optionalUser.orElseThrow(() ->
-                new RuntimeException("User with current login not found"));
-
-        return new ClientDTO(rawClient.getLogin(), rawClient.getPassword());
+    public void save(Client client) {
+        clientRepository.save(client);
     }
 
+    public void delete(String login) {
+        clientRepository.deleteByLogin(login);
+    }
 }

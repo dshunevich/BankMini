@@ -10,5 +10,7 @@ public interface ClientRepository extends CrudRepository<Client, String> {
 
     Optional<Client> findByLogin(String login);
 
+    void deleteByLogin(String login);
+
     boolean existsByLogin(String login);
 }
