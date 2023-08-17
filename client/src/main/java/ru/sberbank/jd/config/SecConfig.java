@@ -1,13 +1,7 @@
 package ru.sberbank.jd.config;
 
-import static org.springframework.security.config.Customizer.withDefaults;
-import org.springframework.context.annotation.Bean;
-import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
-import org.springframework.security.web.SecurityFilterChain;
 
-@EnableWebSecurity
+/*@EnableWebSecurity
 public class SecConfig {
 
     @Bean
@@ -18,4 +12,4 @@ public class SecConfig {
                 ).httpBasic(withDefaults());
         return http.build();
     }
-}
+}*/

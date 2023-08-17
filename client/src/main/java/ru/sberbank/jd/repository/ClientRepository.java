@@ -8,9 +8,9 @@ import ru.sberbank.jd.entity.Client;
 @Repository
 public interface ClientRepository extends CrudRepository<Client, String> {
 
-    Optional<Client> findByLogin(String login);
+    Optional<Client> findByClientId(int login);
 
-    void deleteByLogin(String login);
+    void deleteByClientId(int login);
 
-    boolean existsByLogin(String login);
+    boolean existsByClientId(int login);
 }

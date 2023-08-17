@@ -3,8 +3,6 @@ package ru.sberbank.jd.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import ru.sberbank.jd.dto.ClientDTO;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -26,15 +24,15 @@ public class ClientController {
 
     @DeleteMapping("/delete")
     public ResponseEntity<Void> delete(@RequestBody Client client) {
-        if (clientService.exists(client.getLogin())) {
-            clientService.delete(client.getLogin());
+        if (clientService.exists(client.getClientId())) {
+            clientService.delete(client.getClientId());
             return new ResponseEntity<>(HttpStatus.OK);
         }
         return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
     }
     @PostMapping("/update")
     public ResponseEntity<Void> update(@RequestBody Client client) {
-        if (clientService.exists(client.getLogin())) {
+        if (clientService.exists(client.getClientId())) {
             clientService.save(client);
             return new ResponseEntity<>(HttpStatus.OK);
         }
@@ -43,7 +41,7 @@ public class ClientController {
     @PostMapping("/register")
     public ResponseEntity<Void> register(@RequestBody Client client) {
 //        client.setPassword(encoder.encode(client.getPassword()));
-        if (!clientService.exists(client.getLogin())) {
+        if (!clientService.exists(client.getClientId())) {
             clientService.save(client);
             return new ResponseEntity<>(HttpStatus.OK);
         }

@@ -1,12 +1,6 @@
 package ru.sberbank.jd.service;
 
-import java.util.ArrayList;
-import java.util.Optional;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Service;
-import ru.sberbank.jd.dto.ClientDTO;
 import ru.sberbank.jd.entity.Client;
 import ru.sberbank.jd.repository.ClientRepository;
 
@@ -29,15 +23,15 @@ public class ClientService/* implements UserDetailsService*/ {
         return User.builder().username(client.getLogin()).password(client.getPassword()).roles().build();
     }*/
 
-    public boolean exists(String login) {
-        return clientRepository.existsByLogin(login);
+    public boolean exists(int login) {
+        return clientRepository.existsByClientId(login);
     }
 
     public void save(Client client) {
         clientRepository.save(client);
     }
 
-    public void delete(String login) {
-        clientRepository.deleteByLogin(login);
+    public void delete(int login) {
+        clientRepository.deleteByClientId(login);
     }
 }
