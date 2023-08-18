@@ -19,7 +19,6 @@ import org.springframework.data.annotation.CreatedDate;
     @Column(name="client_id")
     private int clientId;
 
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
     @Column(name="reg_num")
     private int regNum;
 
@@ -40,6 +39,6 @@ import org.springframework.data.annotation.CreatedDate;
     private Date createDt;
 
     @Column(name = "is_active")
-    private boolean isActive;
+    private Boolean isActive;
 
 }

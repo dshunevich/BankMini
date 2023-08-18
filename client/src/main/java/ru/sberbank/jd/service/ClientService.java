@@ -23,15 +23,24 @@ public class ClientService/* implements UserDetailsService*/ {
         return User.builder().username(client.getLogin()).password(client.getPassword()).roles().build();
     }*/
 
-    public boolean exists(int login) {
-        return clientRepository.existsByClientId(login);
+    public boolean exists(int passportNum) {
+        return clientRepository.existsByPassportNum(passportNum);
+    }
+    public boolean existsAndActive(int id) {
+        return clientRepository.existsByClientIdAndIsActive(id, true);
     }
 
     public void save(Client client) {
+        client.setIsActive(true);
+        clientRepository.save(client);
+    }
+    public void update(int id) {
+        Client client = clientRepository.findByClientId(id).get();
+        client.setIsActive(true);
         clientRepository.save(client);
     }
 
-    public void delete(int login) {
-        clientRepository.deleteByClientId(login);
+    public void delete(int id) {
+        clientRepository.deleteByClientId(id);
     }
 }

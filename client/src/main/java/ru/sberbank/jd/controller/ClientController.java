@@ -23,17 +23,17 @@ public class ClientController {
     ClientService clientService;
 
     @DeleteMapping("/delete")
-    public ResponseEntity<Void> delete(@RequestBody Client client) {
-        if (clientService.exists(client.getClientId())) {
-            clientService.delete(client.getClientId());
+    public ResponseEntity<Void> delete(int id) {
+        if (clientService.existsAndActive(id)) {
+            clientService.delete(id);
             return new ResponseEntity<>(HttpStatus.OK);
         }
         return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
     }
-    @PostMapping("/update")
-    public ResponseEntity<Void> update(@RequestBody Client client) {
-        if (clientService.exists(client.getClientId())) {
-            clientService.save(client);
+    @PutMapping("/update")
+    public ResponseEntity<Void> update(int id) {
+        if (clientService.existsAndActive(id)) {
+            clientService.update(id);
             return new ResponseEntity<>(HttpStatus.OK);
         }
         return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
@@ -41,7 +41,7 @@ public class ClientController {
     @PostMapping("/register")
     public ResponseEntity<Void> register(@RequestBody Client client) {
 //        client.setPassword(encoder.encode(client.getPassword()));
-        if (!clientService.exists(client.getClientId())) {
+        if (!clientService.exists(client.getPassportNum())) {
             clientService.save(client);
             return new ResponseEntity<>(HttpStatus.OK);
         }
