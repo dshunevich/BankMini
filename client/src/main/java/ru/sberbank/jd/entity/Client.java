@@ -9,10 +9,12 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Temporal;
 import java.util.Date;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.CreatedDate;
 
-@Entity
+@Entity @NoArgsConstructor
 @Data public class Client {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
@@ -41,4 +43,14 @@ import org.springframework.data.annotation.CreatedDate;
     @Column(name = "is_active")
     private Boolean isActive;
 
+    public Client(int regNum, String password, String firstName, String lastName, int passportNum, Date createDt,
+            Boolean isActive) {
+        this.regNum = regNum;
+        this.password = password;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.passportNum = passportNum;
+        this.createDt = createDt;
+        this.isActive = isActive;
+    }
 }

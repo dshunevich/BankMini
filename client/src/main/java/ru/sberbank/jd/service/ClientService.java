@@ -1,5 +1,7 @@
 package ru.sberbank.jd.service;
 
+import java.util.Date;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.sberbank.jd.entity.Client;
 import ru.sberbank.jd.repository.ClientRepository;
@@ -43,4 +45,11 @@ public class ClientService/* implements UserDetailsService*/ {
     public void delete(int id) {
         clientRepository.deleteByClientId(id);
     }
+ /*   @Autowired
+    public void initData() {
+        Client client = new Client(1, "df", "df", "df", 2, new Date(), true);
+        clientRepository.save(client);
+        client.setPassword("update");
+        clientRepository.save(client);
+    }*/
 }
