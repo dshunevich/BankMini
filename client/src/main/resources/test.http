@@ -1,16 +1,16 @@
-POST http://localhost:8080/register
+POST http://localhost:8080/registration
 Content-Type: application/json
 
-{"login": "Ben", "password": "pass"}
+{"password": "pass", "firstName": "El", "lastName": "Bo", "passportNum": "834212"}
 
 ###
-DELETE http://localhost:8080/delete
-Content-Type: application/json
+DELETE http://localhost:8080/delete?id=1
 
-{"login": "Ben", "password": "pass"}
+###
+DELETE http://localhost:8080/delete?id=4
 
 ###
 POST http://localhost:8080/update
 Content-Type: application/json
 
-{"login": "Ben", "password": "pass"}
+{"password": "update", "firstName": "El", "lastName": "Bo", "passportNum": "834212"}

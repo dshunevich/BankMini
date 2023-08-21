@@ -1,7 +1,7 @@
 package ru.sberbank.jd.service;
 
 import java.util.Date;
-import org.springframework.beans.factory.annotation.Autowired;
+import java.util.Optional;
 import org.springframework.stereotype.Service;
 import ru.sberbank.jd.entity.Client;
 import ru.sberbank.jd.repository.ClientRepository;
@@ -26,24 +26,33 @@ public class ClientService/* implements UserDetailsService*/ {
     }*/
 
     public boolean exists(int passportNum) {
-        return clientRepository.existsByPassportNum(passportNum);
+        return clientRepository.existsByPassportNumAndIsActive(passportNum, true);
     }
     public boolean existsAndActive(int id) {
         return clientRepository.existsByClientIdAndIsActive(id, true);
     }
 
     public void save(Client client) {
+        Optional<Client> c = clientRepository.findByPassportNum(client.getPassportNum());
+        c.ifPresent(value -> {
+            client.setRegNum(value.getRegNum() + 1);
+            client.setClientId(c.get().getClientId());
+        });
         client.setIsActive(true);
+        client.setCreateDt(new Date());
         clientRepository.save(client);
     }
-    public void update(int id) {
-        Client client = clientRepository.findByClientId(id).get();
+    public void update(Client client) {
+        Client c = clientRepository.findByPassportNum(client.getPassportNum()).get();
+        client.setClientId(c.getClientId());
         client.setIsActive(true);
         clientRepository.save(client);
     }
 
     public void delete(int id) {
-        clientRepository.deleteByClientId(id);
+        Client client = clientRepository.findByClientId(id).get();
+        client.setIsActive(false);
+        clientRepository.save(client);
     }
  /*   @Autowired
     public void initData() {

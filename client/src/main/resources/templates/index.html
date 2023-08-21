@@ -1,0 +1,21 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+
+<head th:replace="fragments/head :: common_header(~{::title})">
+  <title>BankMini</title>
+</head>
+
+<div th:replace="fragments/header :: copyheader"></div>
+<body style="background-color: #28a745;">
+<div class="mainblock">
+  <div class="container">
+    <h2>Hello!</h2>
+    <p>MiniBank - is a place where you can carry out basic banking operations.</p>
+    <p>Banking products are our passion</p>
+  </div>
+</div>
+</body>
+
+<div th:replace="fragments/footer :: copy"></div>
+</html>

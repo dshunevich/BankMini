@@ -9,10 +9,9 @@ import ru.sberbank.jd.entity.Client;
 public interface ClientRepository extends CrudRepository<Client, String> {
 
     Optional<Client> findByClientId(int id);
+    Optional<Client> findByPassportNum(int passportNum);
 
-    void deleteByClientId(int id);
-
-    boolean existsByPassportNum(int passportNum);
+    boolean existsByPassportNumAndIsActive(int passportNum, Boolean active);
 
     boolean existsByClientIdAndIsActive(int id, Boolean active);
 
