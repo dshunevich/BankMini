@@ -1,29 +1,28 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
+<html xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml" lang="ru">
 <header th:fragment="copyheader" class="content">
   <table style="width: 100%;">
     <tr>
-      <td><div class="cusheader" style="contain: content; float: top;">
+      <td><div class="cusheader" style="contain: content; float: none;">
         <div style="float: left;">
-          <p><a href="/" th:href="@{/}"><img src="/static/image/logo.png" height="125" width="300"/></a></p>
+          <p><a href="/" th:href="@{/}"><img src="/static/image/sber.png" height="125" width="125" alt=""/></a></p>
         </div>
         <div style="float: right; padding: 5px">
           <div sec:authorize="isAnonymous()">
             <form th:action="@{/login}" method="post">
               <table>
-                <tr><td><label> Passport: </label></td><td><input class="input" type="text" name="passport"/></td></tr>
-                <tr><td><label> Password: </label></td><td><input class="input" type="password" name="password"/></td></tr>
+                <tr><td><label> Passport: </label></td><td><label>
+                  <input class="input" type="text" name="passport"/>
+                </label></td></tr>
+                <tr><td><label> Password: </label></td><td><label>
+                  <input class="input" type="password" name="password"/>
+                </label></td></tr>
                 <tr><td align="center"><input class="btn btn-outline-success my-2 my-sm-0" type="submit" value="Log in"/></td>
                   <td align="center"><a href="/registration"> <button style="align: center;" class="btn btn-outline-success my-2 my-sm-0" type="button">Registration</button> </a></td></tr>
               </table>
             </form>
           </div>
         </div>
-      </div></td>
-    </tr>
-    <tr>
-      <td><div style="float: bottom;">
-        <div th:replace="fragments/navbar :: nav"></div>
       </div></td>
     </tr>
   </table>

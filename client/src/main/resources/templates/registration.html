@@ -1,13 +1,14 @@
-<!DOCTYPE html>
-<html xmlns:th="http://www.w3.org/1999/xhtml">
-
-<head th:replace="fragments/head :: common_header(~{::title})">
-  <title>BankMini - Registration</title>
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8" />
+  <title th:utext="${title}" />
+  <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
 </head>
 
 <div th:replace="fragments/header :: copyheader"></div>
 
-<body style="background-color: #28a745;">
+<body style="background-color: #d1ded7;">
 <div class="mainblock">
   <div class="container">
     <h1>Registration</h1>
@@ -35,6 +36,4 @@
   </div>
 </div>
 </body>
-
-<div th:replace="fragments/footer :: copy"></div>
 </html>

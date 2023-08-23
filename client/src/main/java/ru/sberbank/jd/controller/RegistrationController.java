@@ -32,8 +32,7 @@ public class RegistrationController {
     }
 
     @PostMapping("/registration")
-//    public String registrationPost(@ModelAttribute Client client, Model model) {
-    public ResponseEntity<Void> registrationPost(@RequestBody Client client, Model model) {
+    public String registrationPost(@ModelAttribute Client client, Model model) {
         if (!clientService.exists(client.getPassportNum())) {
             clientService.save(client);
             model.addAttribute("client", client);
@@ -41,10 +40,8 @@ public class RegistrationController {
         else {
             model.addAttribute("userError", true);
             model.addAttribute("errorMessage", "User registration error");
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-//            return "error";
+            return "error";
         }
-//        returtn "succes";
-        return new ResponseEntity<>(HttpStatus.OK);
+        return "succes";
     }
 }

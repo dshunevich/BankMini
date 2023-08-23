@@ -14,3 +14,6 @@ POST http://localhost:8080/update
 Content-Type: application/json
 
 {"password": "update", "firstName": "El", "lastName": "Bo", "passportNum": "834212"}
+
+###
+GET http://localhost:8080/registration
