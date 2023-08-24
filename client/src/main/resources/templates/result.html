@@ -2,19 +2,24 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
 >
 
-<head th:replace="fragments/head :: common_header(~{::title})">
-  <title>BankMini - Succes</title>
+<head th:replace="fragments/head :: common_header(~{::title})" th:with="httpStatus=${T(org.springframework.http.HttpStatus).valueOf(#response.status)}">
+  <title>BankMini - Operation result</title>
 </head>
 
 <body style="background-color: #28a745;">
 <div class="mainblock">
   <div class="container">
-    <h1>Registration completed</h1>
+    <h1 th:text="${operation}"/>
     <table>
       <tr><td><p>Name:</p></td> <td><p th:text="${client.firstName}" /></td></tr>
       <tr><td><p>Surname:</p></td> <td><p th:text="${client.lastName}" /></td></tr>
     <tr><td colspan="2"><a href="/registration"> <button style="align: center;" class="btn btn-outline-success my-2 my-sm-0" type="button">Registrate other client</button> </a></td></tr>
     </table>
+    <div class="container">
+      <h1 th:if="${userError}">Operation exetuted error</h1>
+      <p th:utext="${errorMessage}">Error java.lang.NullPointerException</p>
+      <a href="/" th:href="@{/}">On main page</a>
+    </div>
   </div>
 </div>
 </body>

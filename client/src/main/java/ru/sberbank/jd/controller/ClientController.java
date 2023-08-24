@@ -24,6 +24,11 @@ public class ClientController {
     @Autowired
     ClientService clientService;
 
+    @GetMapping("/")
+    public String rootGet(Model model) {
+        return "index";
+    }
+
     @DeleteMapping("/delete")
     public ResponseEntity<Void> delete(int id) {
         if (clientService.existsAndActive(id)) {
