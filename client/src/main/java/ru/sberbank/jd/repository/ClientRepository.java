@@ -11,8 +11,8 @@ public interface ClientRepository extends CrudRepository<Client, String> {
     Optional<Client> findByClientId(int id);
     Optional<Client> findByPassportNum(int passportNum);
 
-    boolean existsByPassportNumAndIsActive(int passportNum, Boolean active);
+    boolean existsByPassportNumAndIsActive(int passportNum, boolean active);
 
-    boolean existsByClientIdAndIsActive(int id, Boolean active);
+    boolean existsByClientIdAndIsActive(int id, boolean active);
 
 }

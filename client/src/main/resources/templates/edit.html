@@ -2,15 +2,15 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8" />
-  <title>Registration</title>
+  <title>Editing</title>
   <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
 </head>
 
 <body style="background-color: #d1ded7;">
 <div class="mainblock">
   <div class="container">
-    <h1>Registration</h1>
-    <form action="#" th:action="@{/registration}" th:object="${client}" method="post">
+    <h1>Editing</h1>
+    <form action="#" th:action="@{/update}" th:object="${client}" method="post">
       <table width="35%" cellspacing="0" cellpadding="4">
         <tr>
           <td align="right"><p>Name: </p></td>

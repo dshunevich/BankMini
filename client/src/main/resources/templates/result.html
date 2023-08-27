@@ -14,6 +14,9 @@
       <tr><td><p>Name:</p></td> <td><p th:text="${client.firstName}" /></td></tr>
       <tr><td><p>Surname:</p></td> <td><p th:text="${client.lastName}" /></td></tr>
     <tr><td colspan="2"><a href="/registration"> <button style="align: center;" class="btn btn-outline-success my-2 my-sm-0" type="button">Registrate other client</button> </a></td></tr>
+    <tr><td colspan="2"><a th:href="@{'/update/' + ${client.clientId}}"> <button style="align: center;" class="btn btn-outline-success my-2 my-sm-0" type="button">Edit personal data</button> </a></td></tr>
+    <tr><td colspan="2"><a th:href="@{'/delete/' + ${client.clientId}}"> <button style="align: center;" class="btn btn-outline-success my-2 my-sm-0" type="button">Delete personal data</button> </a></td></tr>
+
     </table>
     <div class="container">
       <h1 th:if="${userError}">Operation exetuted error</h1>

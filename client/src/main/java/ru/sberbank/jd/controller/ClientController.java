@@ -1,5 +1,6 @@
 package ru.sberbank.jd.controller;
 
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,37 +16,17 @@ import ru.sberbank.jd.entity.Client;
 import ru.sberbank.jd.service.ClientService;
 
 @Controller
+@AllArgsConstructor
 public class ClientController {
 
-    private final RestTemplate restTemplate = new RestTemplate();
+    private final RestTemplate restTemplate;
 
-//    PasswordEncoder encoder = new BCryptPasswordEncoder();
-
-    @Autowired
-    ClientService clientService;
+    private final ClientService clientService;
 
     @GetMapping("/")
     public String rootGet(Model model) {
         return "index";
     }
-
-    @DeleteMapping("/delete")
-    public ResponseEntity<Void> delete(int id) {
-        if (clientService.existsAndActive(id)) {
-            clientService.delete(id);
-            return new ResponseEntity<>(HttpStatus.OK);
-        }
-        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-    }
-    @PostMapping("/update")
-    public ResponseEntity<Void> update(@RequestBody Client client) {
-        if (clientService.exists(client.getPassportNum())) {
-            clientService.update(client);
-            return new ResponseEntity<>(HttpStatus.OK);
-        }
-        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-    }
-
 
     /*@GetMapping("/get/account/balance/")
     public String getAccountBalance(@RequestBody ClientDTO client, @RequestParam int accountId) {

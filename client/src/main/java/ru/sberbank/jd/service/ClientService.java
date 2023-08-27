@@ -2,19 +2,17 @@ package ru.sberbank.jd.service;
 
 import java.util.Date;
 import java.util.Optional;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import ru.sberbank.jd.entity.Client;
 import ru.sberbank.jd.repository.ClientRepository;
 
 
 @Service
+@AllArgsConstructor
 public class ClientService/* implements UserDetailsService*/ {
 
     private final ClientRepository clientRepository;
-
-    public ClientService(ClientRepository clientRepository) {
-        this.clientRepository = clientRepository;
-    }
 
 /*    @Override
     public UserDetails loadUserByUsername(String login) {
@@ -46,6 +44,8 @@ public class ClientService/* implements UserDetailsService*/ {
         Client c = clientRepository.findByPassportNum(client.getPassportNum()).get();
         client.setClientId(c.getClientId());
         client.setIsActive(true);
+        client.setCreateDt(c.getCreateDt());
+        client.setRegNum(c.getRegNum());
         clientRepository.save(client);
     }
 
@@ -54,11 +54,4 @@ public class ClientService/* implements UserDetailsService*/ {
         client.setIsActive(false);
         clientRepository.save(client);
     }
- /*   @Autowired
-    public void initData() {
-        Client client = new Client(1, "df", "df", "df", 2, new Date(), true);
-        clientRepository.save(client);
-        client.setPassword("update");
-        clientRepository.save(client);
-    }*/
 }
