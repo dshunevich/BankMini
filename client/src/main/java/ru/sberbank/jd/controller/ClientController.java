@@ -24,7 +24,8 @@ public class ClientController {
     private final ClientService clientService;
 
     @GetMapping("/")
-    public String rootGet(Model model) {
+    public String rootGet(@ModelAttribute Client client, Model model) {
+        model.addAttribute("client", new Client());
         return "index";
     }
 

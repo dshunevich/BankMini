@@ -72,6 +72,18 @@ public class RegistrationController {
         return "index";
     }
 
+    @PostMapping("/login")
+    public String login(@ModelAttribute Client client, Model model) {
+        if (clientService.exists(client.getPassportNum(), client.getPassword())) {
+            fillModel(model, false, "Login completed",null);
+            model.addAttribute("client", client);
+        }
+        else {
+            fillModel(model, true, "Login failed", "User login error");
+        }
+        return "result";
+    }
+
     private void fillModel(Model model, boolean error, String operation, String message) {
         model.addAttribute("userError", error);
         model.addAttribute("operation", operation);

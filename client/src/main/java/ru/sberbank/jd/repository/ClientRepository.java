@@ -13,6 +13,8 @@ public interface ClientRepository extends CrudRepository<Client, String> {
 
     boolean existsByPassportNumAndIsActive(int passportNum, boolean active);
 
+    boolean existsByPassportNumAndIsActiveAndPassword(int passportNum, boolean active, String pass);
+
     boolean existsByClientIdAndIsActive(int id, boolean active);
 
 }

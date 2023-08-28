@@ -26,6 +26,10 @@ public class ClientService/* implements UserDetailsService*/ {
     public boolean exists(int passportNum) {
         return clientRepository.existsByPassportNumAndIsActive(passportNum, true);
     }
+
+    public boolean exists(int passportNum, String pass) {
+        return clientRepository.existsByPassportNumAndIsActiveAndPassword(passportNum, true, pass);
+    }
     public boolean existsAndActive(int id) {
         return clientRepository.existsByClientIdAndIsActive(id, true);
     }

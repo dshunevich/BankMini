@@ -8,14 +8,14 @@
           <p><a href="/" th:href="@{/}"><img src="/static/image/sber.png" height="125" width="125" alt=""/></a></p>
         </div>
         <div style="float: right; padding: 5px">
-          <div sec:authorize="isAnonymous()">
-            <form th:action="@{/login}" method="post">
+          <div>
+            <form th:if="${not #strings.isEmpty(client)}" action="#" th:action="@{/login}" th:object="${client}" method="post">
               <table>
                 <tr><td><label> Passport: </label></td><td><label>
-                  <input class="input" type="text" name="passport"/>
+                  <input class="input" type="number" th:field="*{passportNum}" name="passport"/>
                 </label></td></tr>
                 <tr><td><label> Password: </label></td><td><label>
-                  <input class="input" type="password" name="password"/>
+                  <input class="input" type="password" th:field="*{password}" name="password"/>
                 </label></td></tr>
                 <tr><td align="center"><input class="btn btn-outline-success my-2 my-sm-0" type="submit" value="Log in"/></td>
                   <td align="center"><a href="/registration"> <button style="align: center;" class="btn btn-outline-success my-2 my-sm-0" type="button">Registration</button> </a></td></tr>

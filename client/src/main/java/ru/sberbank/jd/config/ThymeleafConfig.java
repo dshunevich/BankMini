@@ -2,13 +2,13 @@ package ru.sberbank.jd.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-//import org.thymeleaf.extras.springsecurity5.dialect.SpringSecurityDialect;
+import org.thymeleaf.extras.springsecurity5.dialect.SpringSecurityDialect;
 
-/*@Configuration
+@Configuration
 public class ThymeleafConfig {
 
-    @Bean
+/*    @Bean
     public SpringSecurityDialect springSecurityDialect(){
         return new SpringSecurityDialect();
-    }
-}*/
+    }*/
+}
