@@ -1,0 +1,35 @@
+version: '3.8'
+services:
+  api-gateway:
+    image: api-gateway:0.0.1
+    build:
+      context: ./api-gateway
+      dockerfile: Dockerfile
+    ports:
+      - 8181:8080
+#  client-service:
+#    image: client-service:0.0.1
+#    build:
+#      context: ./client-service
+#      dockerfile: Dockerfile
+#    ports:
+#      - 8282:8282
+#  account-service:
+#    image: account-service:0.0.1
+#    build:
+#      context: ./account-service
+#      dockerfile: Dockerfile
+#    ports:
+#      - 8383:8383
+  transfer-service:
+    image: transfer-service:0.0.1
+    build:
+      context: ./transfer-service
+      dockerfile: Dockerfile
+    ports:
+      - 8484:8080
+#    depends_on:
+#      - service-db
+#    environment:
+#      - SERVER_PORT= 8181
+#      - SPRING_DATASOURCE_URL=jdbc:postgresql://service-db/gateway_db
