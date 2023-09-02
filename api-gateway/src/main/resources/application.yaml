@@ -1,0 +1,28 @@
+routes:
+  accounts:
+    path: /api/accounts/**
+    url: http://localhost:8081/accounts
+  client:
+    path: /clients/**
+    url: http://localhost:8082/clients
+  deposits:
+    path: /api/deposits/**
+    url: http://localhost:8083/deposits
+  transfers:
+    path: /api/transfers/**
+    url: http://localhost:8084/transfers
+spring:
+  application.name: api-gateway
+#  h2:
+#    console.enabled: true
+#  datasource:
+#    url: jdbc:h2:mem:mb
+#    username: sa
+#    password:
+#  jpa:
+#    show-sql: true
+#    database-platform: org.hibernate.dialect.H2Dialect
+#    properties:
+#      hibernate.jdbc.time_zone: UTC
+#    hibernate:
+#      ddl-auto: create
