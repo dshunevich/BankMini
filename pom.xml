@@ -13,6 +13,7 @@
     <module>api-gateway</module>
     <module>client</module>
     <module>transfer-service</module>
+    <module>account</module>
   </modules>
 
   <properties>
