@@ -1,0 +1,36 @@
+### GET Request ###
+GET http://localhost:8080/api/accounts/1
+
+### POST Request ###
+POST http://localhost:8080/api/accounts/open
+Content-Type: application/json
+
+{
+  "id": 1,
+  "clientId": 1,
+  "balance": 1000,
+  "active": true
+}
+
+### PUT Deposit Funds ###
+PUT http://localhost:8080/api/accounts/deposit/1
+Content-Type: application/x-www-form-urlencoded
+
+amount=200
+
+
+### PUT Withdraw Funds ###
+PUT http://localhost:8080/api/accounts/withdraw/1
+Content-Type: application/x-www-form-urlencoded
+
+amount=50
+
+
+### DELETE Close Account ###
+DELETE http://localhost:8080/api/accounts/close/1
+
+
+### POST Request ###
+POST http://localhost:8080/api/accounts/reopen?accountId=1
+Content-Type: application/x-www-form-urlencoded
+
