@@ -20,14 +20,12 @@ public class BankAccountController {
     @Autowired
     private BankAccountService bankAccountService;
 
-
-    public void setBankAccountServiceImpl(BankAccountServiceImpl bankAccountServiceImpl) {
-        this.bankAccountServiceImpl = bankAccountServiceImpl;
-    }
-
     @PostMapping("/open")
-    public ResponseEntity<BankAccount> openAccount(@RequestBody BankAccount newAccount) {
-        Optional<BankAccount> optionalAccount = bankAccountService.openAccount(newAccount);
+    public ResponseEntity<BankAccount> openAccount(
+            @RequestParam("clientId") int clientId,
+            @RequestParam("currencyId") int currencyId
+    ) {
+        Optional<BankAccount> optionalAccount = bankAccountService.openAccount(clientId, currencyId);
         return optionalAccount
                 .map(account -> new ResponseEntity<>(account, HttpStatus.CREATED))
                 .orElse(new ResponseEntity<>(HttpStatus.BAD_REQUEST));

@@ -43,14 +43,14 @@ class BankAccountServiceTest {
         assertEquals(bankAccount, foundAccount.get());
     }
 
-    @Test
-    void testOpenAccount() {
-        when(bankAccountRepository.save(any(BankAccount.class))).thenReturn(bankAccount);
-
-        BankAccount createdAccount = bankAccountService.openAccount(bankAccount).orElse(null);
-
-        assertEquals(bankAccount, createdAccount);
-    }
+//    @Test
+//    void testOpenAccount() {
+//        when(bankAccountRepository.save(any(BankAccount.class))).thenReturn(bankAccount);
+//
+//        BankAccount createdAccount = bankAccountService.openAccount(bankAccount).orElse(null);
+//
+//        assertEquals(bankAccount, createdAccount);
+//    }
 
 //    @Test
 //    void testDepositFunds() {

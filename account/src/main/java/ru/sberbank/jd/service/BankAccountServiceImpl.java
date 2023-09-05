@@ -5,7 +5,6 @@ import org.springframework.stereotype.Service;
 import ru.sberbank.jd.entity.BankAccount;
 import ru.sberbank.jd.repository.BankAccountRepository;
 
-import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -18,29 +17,26 @@ public class BankAccountServiceImpl implements BankAccountService {
     }
 
     @Override
-    public Optional<BankAccount> openAccount(BankAccount newAccount) {
+    public Optional<BankAccount> openAccount(int clientId, int currencyId) {
         try {
-            // Validate new account information
-            if (newAccount == null || newAccount.getClientId() <= 0 || newAccount.getBalance() < 0) {
+
+            // Validate client ID and currency ID
+            if (clientId <= 0 || currencyId <= 0) {
                 return Optional.empty();
             }
 
-//            //Optional<BankAccount> existingAccount = bankAccountRepository.findById(newAccount.getId());
-//            List<BankAccount> existingAccount = bankAccountRepository.findByClientIdAndCurrencyCode(newAccount.getClientId(), newAccount.getCurrencyCode());
-//            if (!existingAccount.isEmpty()) {
-//                System.err.println("Account with Cleint Id " + newAccount.getClientId() + " and currency " + newAccount.getCurrencyCode() + " is already exists!");
-//                return Optional.empty(); // Account with the same ID already exists
-//            }
+            // Create a new bank account
+            BankAccount newAccount = new BankAccount(clientId, currencyId);
 
-            // Create and save the new account
+            // Save the new account
             BankAccount createdAccount = bankAccountRepository.save(newAccount);
+
             return Optional.of(createdAccount);
         } catch (Exception e) {
             System.err.println("Error opening new account: " + e.getMessage());
             return Optional.empty();
         }
     }
-
 
     @Override
     public Optional<BankAccount> reopenAccount(int accountId) {
