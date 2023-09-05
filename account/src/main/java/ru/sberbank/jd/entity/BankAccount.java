@@ -17,27 +17,27 @@ public class BankAccount {
     private int clientId;
     private double balance;
     private boolean active;
-    private String currencyCode;
+    private int currencyId;
 
     public BankAccount() {}
 
-    public BankAccount(int clientId, String currencyCode) {
+    public BankAccount(int clientId, int currencyId) {
         this.clientId = clientId;
         this.active = true;
-        this.currencyCode = currencyCode;
+        this.currencyId = currencyId;
     }
 
-    public BankAccount(int clientId, double balance, String currencyCode) {
+    public BankAccount(int clientId, double balance, int currencyId) {
         this.clientId = clientId;
         this.balance = balance;
         this.active = true;
-        this.currencyCode = currencyCode;
+        this.currencyId = currencyId;
     }
 
-    public BankAccount(int clientId, double balance, boolean active, String currencyCode) {
+    public BankAccount(int clientId, double balance, boolean active, int currencyId) {
         this.clientId = clientId;
         this.balance = balance;
         this.active = active;
-        this.currencyCode = currencyCode;
+        this.currencyId = currencyId;
     }
 }

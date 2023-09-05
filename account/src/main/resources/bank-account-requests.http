@@ -44,6 +44,6 @@ Content-Type: application/json
 
 {
   "clientId": 2,
-  "currencyCode": "RUB",
+  "currencyId": 1,
   "active": true
 }
