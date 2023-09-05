@@ -24,7 +24,7 @@ public class BankAccountServiceImplTest {
 
     @Test
     public void testOpenAccount() {
-        BankAccount newAccount = new BankAccount(1, 1, 1000, true);
+        BankAccount newAccount = new BankAccount(1, 1000, true, "RUB");
 
         when(bankAccountRepository.save(any(BankAccount.class))).thenReturn(newAccount);
 

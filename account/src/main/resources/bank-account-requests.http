@@ -6,7 +6,6 @@ POST http://localhost:8080/api/accounts/open
 Content-Type: application/json
 
 {
-  "id": 1,
   "clientId": 1,
   "balance": 1000,
   "active": true
@@ -34,3 +33,17 @@ DELETE http://localhost:8080/api/accounts/close/1
 POST http://localhost:8080/api/accounts/reopen?accountId=1
 Content-Type: application/x-www-form-urlencoded
 
+
+
+
+
+
+### POST Request ###
+POST http://localhost:8080/api/accounts/open
+Content-Type: application/json
+
+{
+  "clientId": 2,
+  "currencyCode": "RUB",
+  "active": true
+}

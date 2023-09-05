@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import ru.sberbank.jd.entity.BankAccount;
 import ru.sberbank.jd.repository.BankAccountRepository;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -24,12 +25,12 @@ public class BankAccountServiceImpl implements BankAccountService {
                 return Optional.empty();
             }
 
-            // Check if an account with the same ID already exists
-            Optional<BankAccount> existingAccount = bankAccountRepository.findById(newAccount.getId());
-            if (existingAccount.isPresent()) {
-                System.err.println("Account with ID " + newAccount.getId() + " is already exists!");
-                return Optional.empty(); // Account with the same ID already exists
-            }
+//            //Optional<BankAccount> existingAccount = bankAccountRepository.findById(newAccount.getId());
+//            List<BankAccount> existingAccount = bankAccountRepository.findByClientIdAndCurrencyCode(newAccount.getClientId(), newAccount.getCurrencyCode());
+//            if (!existingAccount.isEmpty()) {
+//                System.err.println("Account with Cleint Id " + newAccount.getClientId() + " and currency " + newAccount.getCurrencyCode() + " is already exists!");
+//                return Optional.empty(); // Account with the same ID already exists
+//            }
 
             // Create and save the new account
             BankAccount createdAccount = bankAccountRepository.save(newAccount);
